@@ -3,4 +3,7 @@
 3.make directory in local machine: $ mkdir trial_exam_db
 4.go into the new directory: $ cd trial_exam_db
 5.clone online repo by : $ git clone git@github.com:Achim-Hongenaert/trial_exam.git
-
+6.after making this file, add the file to the track with: $ git add exercise1.txt
+7. commit changes with : $ git commit -m "commitmessage"
+8. check for the remote key with : $ git remote --> origin
+9. push the file/changes to github with : $ git push origin main 
