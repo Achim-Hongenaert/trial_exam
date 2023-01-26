@@ -7,7 +7,7 @@ DB(*staffNo*, dentistName,*patientNo*, patientName, *apptDate*, apptTime, suerge
 2NF:
 Dentist(*staffNo*, dentistName)
 Patient(*patientNo*, patientName)
-Surgery(*staffNo*, *apptDate*, apptTime, surgeryNo)
+Surgery(*staffNo*, *apptDate*, patientNo, apptTime, surgeryNo)
 
 3NF:
 same as 2NF
