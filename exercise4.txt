@@ -1,0 +1,64 @@
+- List the names and addresses of all guests in London, alphabetically ordered by name
+	$ select guestname, guestaddress from booking join hotel on booking.hotelno=hotel.hotelno join guest on booking.guestno=guest.guestno where city="London" order by guestname;
++--------------+-----------------------+
+| guestname    | guestaddress          |
++--------------+-----------------------+
+| Carol Farrel | 6 Achray St, Glasgow  |
+| Joe Keogh    | 2 Fergus Dr, Aberdeen |
+| John Kay     | 56 High St, London    |
+| John Kay     | 56 High St, London    |
+| Mike Ritchie | 18 Tain St, London    |
+| Mike Ritchie | 18 Tain St, London    |
+| Tina Murphy  | 63 Well St, Glasgow   |
++--------------+-----------------------+
+
+-  List all double or family rooms with a price below £40.00 per night, cheapest first
+	$ MariaDB [vacation]> select hotelname, roomno, type, price from room join hotel on room.hotelno=hotel.hotelno where type="double" or type="family" having price<40 order by price asc;
++-----------------+--------+--------+-------+
+| hotelname       | roomno | type   | price |
++-----------------+--------+--------+-------+
+| Phoenix Park    |    801 | double | 15.00 |
+| The Tower Hotel |    601 | double | 29.00 |
+| Latham          |   1001 | double | 30.00 |
+| Latham          |   1101 | family | 35.00 |
+| The Tower Hotel |    701 | family | 39.00 |
++-----------------+--------+--------+-------+
+
+- List the bookings for which no date_to has been specified.
+
+select hotelname, roomno, guestname, datefrom, dateto from booking join hotel on booking.hotelno=hotel.hotelno join guest on booking.guestno=guest.guestno where dateto is null;
++-----------------+--------+--------------+------------+--------+
+| hotelname       | roomno | guestname    | datefrom   | dateto |
++-----------------+--------+--------------+------------+--------+
+| Omni Shoreham   |   1101 | Tina Murphy  | 2022-04-21 | NULL   |
+| Latham          |   1001 | Mary Tregear | 2022-05-20 | NULL   |
+| The Tower Hotel |    701 | John Kay     | 2022-05-01 | NULL   |
++-----------------+--------+--------------+------------+--------+
+
+- What is the average price of a room?
+MariaDB [vacation]> select round(avg(price),2) from room;
++---------------------+
+| round(avg(price),2) |
++---------------------+
+|               35.75 |
++---------------------+
+
+- What is the total revenue per night from all double rooms?
+MariaDB [vacation]> select sum(price) from room where type="double";
++------------+
+| sum(price) |
++------------+
+|     160.00 |
++------------+
+
+- How many different guests have made bookings for August?
+MariaDB [vacation]> select count(booking.guestno) as GuestsAugust from booking join guest on booking.guestno=guest.guestno where datefrom between "2022-08-01" and
+"2022-
++--------------+
+| GuestsAugust |
++--------------+
+|            0 |
++--------------+
+
+- List the price and type of all rooms at the Grosvenor Hotel
+ 
