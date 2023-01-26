@@ -1,0 +1,224 @@
+- Display the fields restaurant_id, name, borough and cuisine for all the documents in the collection restaurant
+
+restaurants> db.restaurants.find({},{restaurant_id:1 , name:1, borough:1, cuisine:1})
+[
+  {
+    _id: ObjectId("63d2fc716ffccfbefa49827b"),
+    borough: 'Bronx',
+    cuisine: 'Bakery',
+    name: 'Morris Park Bake Shop',
+    restaurant_id: '30075445'
+  },
+  {
+    _id: ObjectId("63d2fc716ffccfbefa49827c"),
+    borough: 'Brooklyn',
+    cuisine: 'Hamburgers',
+    name: "Wendy'S",
+    restaurant_id: '30112340'
+  },
+  {
+    _id: ObjectId("63d2fc716ffccfbefa49827d"),
+    borough: 'Manhattan',
+    cuisine: 'Irish',
+    name: 'Dj Reynolds Pub And Restaurant',
+    restaurant_id: '30191841'
+  },
+  {
+    _id: ObjectId("63d2fc716ffccfbefa49827e"),
+    borough: 'Brooklyn',
+    cuisine: 'American',
+    name: 'Riviera Caterer',
+    restaurant_id: '40356018'
+  },
+  {
+    _id: ObjectId("63d2fc716ffccfbefa49827f"),
+    borough: 'Queens',
+    cuisine: 'Jewish/Kosher',
+    name: 'Tov Kosher Kitchen',
+    restaurant_id: '40356068'
+  },
+  {
+    _id: ObjectId("63d2fc716ffccfbefa498280"),
+    borough: 'Queens',
+    cuisine: 'American',
+    name: 'Brunos On The Boulevard',
+    restaurant_id: '40356151'
+  },
+  {
+    _id: ObjectId("63d2fc716ffccfbefa498281"),
+    borough: 'Staten Island',
+    cuisine: 'Jewish/Kosher',
+    name: 'Kosher Island',
+    restaurant_id: '40356442'
+  },
+  {
+    _id: ObjectId("63d2fc716ffccfbefa498282"),
+    borough: 'Brooklyn',
+    cuisine: 'Delicatessen',
+    name: "Wilken'S Fine Food",
+    restaurant_id: '40356483'
+  },
+  {
+    _id: ObjectId("63d2fc716ffccfbefa498283"),
+    borough: 'Brooklyn',
+    cuisine: 'American',
+    name: 'Regina Caterers',
+    restaurant_id: '40356649'
+  },
+  {
+    _id: ObjectId("63d2fc716ffccfbefa498284"),
+    borough: 'Brooklyn',
+    cuisine: 'Ice Cream, Gelato, Yogurt, Ices',
+    name: 'Taste The Tropics Ice Cream',
+    restaurant_id: '40356731'
+  },
+  {
+    _id: ObjectId("63d2fc716ffccfbefa498285"),
+    borough: 'Bronx',
+    cuisine: 'American',
+    name: 'Wild Asia',
+    restaurant_id: '40357217'
+  },
+  {
+    _id: ObjectId("63d2fc716ffccfbefa498286"),
+    borough: 'Brooklyn',
+    cuisine: 'American',
+    name: 'C & C Catering Service',
+    restaurant_id: '40357437'
+  },
+  {
+    _id: ObjectId("63d2fc716ffccfbefa498287"),
+    borough: 'Brooklyn',
+    cuisine: 'Chinese',
+    name: 'May May Kitchen',
+    restaurant_id: '40358429'
+  },
+  {
+    _id: ObjectId("63d2fc716ffccfbefa498288"),
+    borough: 'Manhattan',
+    cuisine: 'American',
+    name: '1 East 66Th Street Kitchen',
+    restaurant_id: '40359480'
+  },
+  {
+    _id: ObjectId("63d2fc716ffccfbefa498289"),
+    borough: 'Brooklyn',
+    cuisine: 'Jewish/Kosher',
+    name: 'Seuda Foods',
+    restaurant_id: '40360045'
+  },
+  {
+    _id: ObjectId("63d2fc716ffccfbefa49828a"),
+    borough: 'Brooklyn',
+    cuisine: 'Ice Cream, Gelato, Yogurt, Ices',
+    name: 'Carvel Ice Cream',
+    restaurant_id: '40360076'
+  },
+  {
+    _id: ObjectId("63d2fc716ffccfbefa49828b"),
+    borough: 'Queens',
+    cuisine: 'Ice Cream, Gelato, Yogurt, Ices',
+    name: 'Carvel Ice Cream',
+    restaurant_id: '40361322'
+  },
+  {
+    _id: ObjectId("63d2fc716ffccfbefa49828c"),
+    borough: 'Brooklyn',
+    cuisine: 'Delicatessen',
+    name: 'Nordic Delicacies',
+    restaurant_id: '40361390'
+  },
+  {
+    _id: ObjectId("63d2fc716ffccfbefa49828d"),
+    borough: 'Manhattan',
+    cuisine: 'American',
+    name: 'Glorious Food',
+    restaurant_id: '40361521'
+  },
+  {
+    _id: ObjectId("63d2fc716ffccfbefa49828e"),
+    borough: 'Brooklyn',
+    cuisine: 'American',
+    name: 'The Movable Feast',
+    restaurant_id: '40361606'
+  }
+]
+
+
+- Display the second group of 5 restaurants which are in the borough Bronx
+restaurants> db.restaurants.find({borough:"Bronx"},{name:1, borough:1}).skip(5).limit(5)
+[
+  {
+    _id: ObjectId("63d2fc716ffccfbefa4982b8"),
+    borough: 'Bronx',
+    name: 'Manhem Club'
+  },
+  {
+    _id: ObjectId("63d2fc716ffccfbefa4982d0"),
+    borough: 'Bronx',
+    name: 'The New Starling Athletic Club Of The Bronx'
+  },
+  {
+    _id: ObjectId("63d2fc716ffccfbefa4982e4"),
+    borough: 'Bronx',
+    name: 'Yankee Tavern'
+  },
+  {
+    _id: ObjectId("63d2fc716ffccfbefa4982fa"),
+    borough: 'Bronx',
+    name: 'Mcdwyers Pub'
+  },
+  {
+    _id: ObjectId("63d2fc716ffccfbefa49830e"),
+    borough: 'Bronx',
+    name: 'The Punch Bowl'
+  }
+]
+
+
+- Find the restaurants who achieved a score more than 90
+restaurants> db.restaurants.find({"grades.score":{$gt:90}},{name:1,score:1})
+[
+  {
+    _id: ObjectId("63d2fc716ffccfbefa4983d3"),
+    name: "Murals On 54/Randolphs'S"
+  },
+  { _id: ObjectId("63d2fc716ffccfbefa498473"), name: 'Gandhi' },
+  { _id: ObjectId("63d2fc716ffccfbefa4985d9"), name: 'Bella Napoli' }
+
+
+- Find the restaurants that do not prepare any cuisine of 'American' and their grade score more than 70 and latitude less than -65.754168.
+restaurants> db.restaurants.find({cuisine:{$ne:'American'},"grades.score":{$gt:70},"address.coord.0":{$lt:-65.754168}},{name:1, cuisine:1, "address.coord":1})
+[
+  {
+    _id: ObjectId("63d2fc716ffccfbefa498473"),
+    address: { coord: [ -73.9864626, 40.7266739 ] },
+    cuisine: 'Indian',
+    name: 'Gandhi'
+  },
+  {
+    _id: ObjectId("63d2fc716ffccfbefa4985d9"),
+    address: { coord: [ -73.984758, 40.7457939 ] },
+    cuisine: 'Pizza/Italian',
+    name: 'Bella Napoli'
+  },
+  {
+    _id: ObjectId("63d2fc716ffccfbefa4985f2"),
+    address: { coord: [ -73.9243061, 40.8276297 ] },
+    cuisine: 'Latin (Cuban, Dominican, Puerto Rican, South & Central American',
+    name: 'El Molino Rojo Restaurant'
+  },
+  {
+    _id: ObjectId("63d2fc716ffccfbefa498735"),
+    address: { coord: [ -73.94610279999999, 40.7137587 ] },
+    cuisine: 'Bakery',
+    name: 'Fortunato Bros Cafe & Bakery'
+  },
+  {
+    _id: ObjectId("63d2fc716ffccfbefa498d61"),
+    address: { coord: [ -73.9772294, 40.7527262 ] },
+    cuisine: 'Italian',
+    name: 'Two Boots Grand Central'
+  }
+]
+
