@@ -1,0 +1,6 @@
+1.Make new repository on Github named trial_exam
+2.Copy the ssh link from Github
+3.make directory in local machine: $ mkdir trial_exam_db
+4.go into the new directory: $ cd trial_exam_db
+5.clone online repo by : $ git clone git@github.com:Achim-Hongenaert/trial_exam.git
+
