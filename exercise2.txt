@@ -10,4 +10,7 @@ Patient(*patientNo*, patientName)
 Surgery(*staffNo*, *apptDate*, patientNo, apptTime, surgeryNo)
 
 3NF:
-same as 2NF
+Dentist(*staffNo*, dentistName)
+Patient(*patientNo*, patientName)
+Surgery_patient(*staffNo*, *apptDate*, patientNo, apptTime)
+Surgery_number(*staffNo*, *apptDate*, surgeryNo)
